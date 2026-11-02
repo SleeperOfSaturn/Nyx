@@ -1,0 +1,19 @@
+#nixos/system/fkage-packages.nix
+{ inputs, pkgs, ... }:
+
+{
+  environment.systemPackages = [
+    #inputs.durdraw.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.helium-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.blueferry.packages.${pkgs.stdenv.hostPlatform.system}.blueferry-full
+    inputs.syd.packages.${pkgs.stdenv.hostPlatform.system}.default
+    #inputs.sidra.packages.${pkgs.stdenv.hostPlatform.system}.sidra
+    (pkgs.callPackage ../../packages/pkgit.nix {
+      src = inputs.pkgit;
+    })
+    (pkgs.callPackage ../packages/elementary-urutau.nix {
+      src = ../assets/elementary-urutau;
+    })
+  ];
+}

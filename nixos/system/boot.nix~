@@ -1,0 +1,20 @@
+#nixos/system/boot.nix
+{ ... }:
+
+{
+ # Disable the systemd-boot EFI boot loader.
+  boot.loader.systemd-boot.enable = false;
+
+  boot.loader.limine = {
+    enable = true;
+    maxGenerations = 3;
+
+    extraEntries = ''
+      /Windows
+        protocol: efi
+        path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
+    '';
+  };
+  boot.loader.limine.efiInstallAsRemovable = false;
+  
+}
