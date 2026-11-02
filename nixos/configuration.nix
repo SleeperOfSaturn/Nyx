@@ -10,7 +10,7 @@
     ./system/flake-packages.nix
     ./system/fonts.nix
     ./system/hardware-configuration.nix
-    
+    ./system/kernel.nix
     ./system/locales.nix
     ./system/networking.nix
     ./system/nix-settings.nix
