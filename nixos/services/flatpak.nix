@@ -41,7 +41,6 @@
       { appId = "io.github.flodavid.EspaceLibre"; origin = "appcenter"; }
       { appId = "io.github.jhaygood86.mauborgne"; origin = "appcenter"; }
       { appId = "io.github.leolost2605.detective"; origin = "appcenter"; }
-      { appId = "org.gnome.Evince//stable"; origin = "appcenter"; }
       { appId = "org.gnome.FileRoller//stable"; origin = "appcenter"; }
       { appId = "org.gnome.font-viewer"; origin = "appcenter"; }
 

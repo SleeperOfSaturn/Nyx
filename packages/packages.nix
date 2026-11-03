@@ -71,7 +71,6 @@ pkgs: with pkgs; [
     libplist
 
     # Applications
-    evolution
     nicotine-plus
     gimp
     tsukimi
@@ -83,5 +82,6 @@ pkgs: with pkgs; [
     tuxpaint
     tuxtype
 
-    #syd
+    # syd
+    pfetch
 ]

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   fonts = {
@@ -10,13 +10,15 @@
       inter
       jetbrains-mono
       hack-font
+    ] ++ [
+      inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd
+      inputs.apple-fonts.packages.${pkgs.system}.sf-mono-nerd
     ];
 
     fontconfig = {
       enable = true;
       antialias = true;
 
-      # never fall back to jagged legacy bitmap fonts
       allowBitmaps = false;
 
       hinting = {
@@ -27,6 +29,25 @@
 
       subpixel = {
         rgba = "none";
+      };
+
+      defaultFonts = {
+        sansSerif = [
+          "SFProDisplay Nerd Font"
+          "Noto Color Emoji"
+        ];
+
+        serif = [
+          "SFProDisplay Nerd Font"
+        ];
+
+        monospace = [
+          "SFMono Nerd Font"
+        ];
+
+        emoji = [
+          "Noto Color Emoji"
+        ];
       };
     };
   };

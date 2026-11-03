@@ -4,11 +4,12 @@
   programs.nixcord = {
     enable = true;
     vesktop.enable = true;
+    discord.enable = false;
 
     config = {
       useQuickCss = true;
       themeLinks = [
-        "https://raw.githubusercontent.com/SlippingGittys-Discord-Themes/surCord/c3419728d982daf4409f356fcb7a4d01452e8ab7/surCord.theme.css"
+        "https://raw.githubusercontent.com/ricewind012/discord-gnome-theme/master/gnome.theme.css"
       ];
       plugins = {
         accountPanelServerProfile.enable = true;

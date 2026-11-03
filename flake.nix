@@ -29,6 +29,12 @@
     blueferry.url = "github:piercegwang/nix-flake-blueferry";
     blip.url = "github:blip-net/nix";
 
+   #Miscellaneous Packages
+    apple-fonts = {
+      url = "github:Lyndeno/apple-fonts.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
    #Configurator Packages
     lazyvim-nix.url = "github:pfassina/lazyvim-nix";
     nixcord.url = "github:4evy/nixcord";

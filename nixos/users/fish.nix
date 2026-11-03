@@ -1,4 +1,3 @@
-# nixos/users/fish.nix
 
 { config, pkgs, ... }:
 
@@ -7,12 +6,22 @@
     enable = true;
 
     shellAliases = {
-      ll = "ls -l";
+      ll = "ls -lah";
       fuckoff = "shutdown now";
     };
 
     interactiveShellInit = ''
       pay-respects fish --alias thefuck | source
+
+      function starship_transient_prompt_func
+        starship module character
+      end
+
+      function starship_transient_rprompt_func
+        :
+      end
+
+      enable_transience
     '';
   };
 
@@ -24,79 +33,168 @@
       command_timeout = 4000;
       add_newline = false;
 
-      format = ''
-        [╭─](bold red)$username$directory$git_branch$git_status$git_metrics$nodejs$package$time
-        [╰─](bold red)$character'';
+      # Prompt structure
+      format = "$username$hostname$directory $fill $all $time$line_break$character";
 
-      cmd_duration = {
-        format = "took [$duration]($style) ";
+      # Shell interaction
+      character = {
+        success_symbol = "[@](bold green)";
+        error_symbol = "[@](bold red)";
+        vimcmd_symbol = "[@](bold blue)";
+      };
+
+      fill = {
+        symbol = "─";
+        style = "dimmed";
+      };
+
+      # Context modules
+      username = {
+        style_user = "bold blue";
+        style_root = "bold red";
+        format = "[$user]($style)";
+        show_always = false;
+      };
+
+      hostname = {
+        ssh_only = true;
+        style = "blue";
+        format = "[@$hostname]($style)";
+        disabled = false;
       };
 
       directory = {
+        truncation_length = 4;
         truncate_to_repo = true;
-        style = "bold cyan";
+        truncation_symbol = "…/";
+        style = "cyan";
+        format = "[$path]($style)";
+        read_only = " 󰌾";
+        read_only_style = "dimmed white";
       };
 
+      shell.disabled = true;
+
+      # Time
+      time = {
+        disabled = false;
+        time_format = "%F %T";
+        style = "dimmed white";
+        format = "[$time]($style)";
+      };
+
+      # Command duration
+      cmd_duration = {
+        min_time = 10000;
+        style = "dimmed white";
+        format = "[⏱ $duration]($style)";
+      };
+
+      # Git
       git_branch = {
-        symbol = " ";
-        style = "bold bright-purple";
-        format = "($style)[$symbol]($style)[$branch]($style) ";
+        symbol = "git ";
+        style = "yellow";
+        format = "[$symbol$branch]($style)";
       };
 
       git_status = {
-        style = "bright-red";
+        style = "white";
+        format = "([$all_status$ahead_behind]($style))";
+        conflicted = "≠";
+        ahead = "⇡";
+        behind = "⇣";
+        diverged = "⇕";
+        untracked = "?";
+        stashed = "$";
+        modified = "!";
+        staged = "+";
+        renamed = "»";
+        deleted = "✘";
       };
 
-      git_metrics = {
-        disabled = false;
-        added_style = "green";
-        deleted_style = "red";
-        format = "(\\[([+$added]($added_style))([-$deleted]($deleted_style))\\])";
+      git_commit = {
+        style = "dimmed white";
+        format = "[$hash]($style)";
       };
 
+      git_state = {
+        style = "dimmed white";
+        format = "[$state( $progress_current of $progress_total)]($style)";
+      };
+
+      # Language runtimes
       nodejs = {
-        disabled = false;
+        symbol = "node ";
         style = "green";
-        symbol = " ";
+        format = "[$symbol($version )]($style)";
       };
 
-      package = {
-        disabled = false;
-        display_private = true;
-        symbol = " ";
-        style = "bold green";
+      rust = {
+        symbol = "rs ";
+        style = "red";
+        format = "[$symbol($version )]($style)";
       };
 
-      time = {
-        disabled = false;
-        style = "bold yellow";
+      golang = {
+        symbol = "go ";
+        style = "cyan";
+        format = "[$symbol($version )]($style)";
       };
-
-      username = {
-        disabled = false;
-        show_always = true;
-        format = "[ $user]($style)";
-        style = "bold green";
-      };
-
-      aws.symbol = " ";
-      docker_context.symbol = " ";
-      memory_usage.symbol = " ";
 
       python = {
-        symbol = " ";
-        detect_files = [
-          ".python-version"
-          "Pipfile"
-          "__init__.py"
-          "pyproject.toml"
-          "requirements.txt"
-          "setup.py"
-          "app.py"
-        ];
+        symbol = "py ";
+        style = "yellow";
+        format = "[$symbol($version )]($style)";
       };
 
-      rust.symbol = " ";
+      # Cloud / DevOps
+      aws = {
+        symbol = "aws ";
+        style = "yellow";
+        format = "[$symbol($profile )]($style)";
+      };
+
+      gcloud = {
+        symbol = "gcp ";
+        style = "blue";
+        format = "[$symbol($active )]($style)";
+      };
+
+      kubernetes = {
+        symbol = "k8s ";
+        style = "cyan";
+        format = "[$symbol($context)]($style)";
+      };
+
+      terraform = {
+        symbol = "tf ";
+        style = "magenta";
+        format = "[$symbol($workspace)]($style)";
+      };
+
+      # Package management
+      package = {
+        symbol = "package ";
+        style = "yellow";
+        format = "[$symbol$version]($style)";
+      };
+
+      # System
+      jobs = {
+        symbol = "⚙ ";
+        style = "blue";
+        format = "[$symbol$number]($style)";
+        threshold = 1;
+      };
+
+      memory_usage.disabled = true;
+      battery.disabled = true;
+
+      shlvl = {
+        style = "dimmed white";
+        format = "[$shlvl]($style)";
+        threshold = 2;
+      };
     };
   };
 }
