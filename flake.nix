@@ -35,6 +35,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sunshine-virt-display = {
+      url = "github:frostplexx/sunshine_virt_display";
+      flake = false;
+    };
+
    #Configurator Packages
     lazyvim-nix.url = "github:pfassina/lazyvim-nix";
     nixcord.url = "github:4evy/nixcord";

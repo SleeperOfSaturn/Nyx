@@ -5,6 +5,7 @@
   environment.systemPackages = [
     #inputs.durdraw.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.blip.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.helium-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.blueferry.packages.${pkgs.stdenv.hostPlatform.system}.blueferry-full
     inputs.syd.packages.${pkgs.stdenv.hostPlatform.system}.default

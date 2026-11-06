@@ -677,6 +677,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_7",
         "pkgit": "pkgit",
+        "sunshine-virt-display": "sunshine-virt-display",
         "syd": "syd",
         "zen-browser": "zen-browser"
       }
@@ -789,6 +790,22 @@
         "owner": "Daaboulex",
         "ref": "release",
         "repo": "nix-packaging-standard",
+        "type": "github"
+      }
+    },
+    "sunshine-virt-display": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1782977820,
+        "narHash": "sha256-0+hmYgcL5NGgKTsCWmdMvx8U8tnU1o/U4Q5pVqny4jA=",
+        "owner": "frostplexx",
+        "repo": "sunshine_virt_display",
+        "rev": "4d84be67d09bb21c9d75dfa630d85b7b7a334758",
+        "type": "github"
+      },
+      "original": {
+        "owner": "frostplexx",
+        "repo": "sunshine_virt_display",
         "type": "github"
       }
     },

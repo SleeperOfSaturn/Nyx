@@ -23,12 +23,8 @@ pkgs: with pkgs; [
 
     # Engines and simulation
     godot
-    mujoco
 
     # Shell and terminal
-    zsh
-    ghostty
-    wezterm
     pay-respects
     btop
     fastfetch
@@ -64,7 +60,6 @@ pkgs: with pkgs; [
     surface-control
 
     # Phones and devices
-    kdePackages.kdeconnect-kde
     usbmuxd
     libimobiledevice
     libusbmuxd

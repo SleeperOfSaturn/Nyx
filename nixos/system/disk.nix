@@ -11,6 +11,7 @@
       "umask=000"
       "noatime"
       "nofail"
+      "x-gvfs-show"
     ];
   };
 }

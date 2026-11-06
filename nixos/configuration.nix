@@ -24,8 +24,10 @@
     ./services/misc.nix
     ./services/steam.nix
     ./services/sunshine.nix
+    ./services/tray.nix
 
-    ./surface/surface-thermal.nix
+    ./hardware/surface-thermal.nix
+    ./hardware/intel-graphics.nix
 
     ./users/fish.nix
     ./users/saturn.nix
