@@ -1,5 +1,13 @@
-{ ... }:
 
+{ pkgs, ... }:
+
+let
+  elementaryUrutau = pkgs.callPackage ../../packages/elementary-urutau.nix {
+    src = ../assets/elementary-urutau;
+  };
+
+  elementary = pkgs.pantheon.elementary-icon-theme;
+in
 {
   services.flatpak = {
     enable = true;
@@ -57,5 +65,26 @@
       { appId = "page.codeberg.elly_code.reminduck"; origin = "flathub"; }
       { appId = "sh.ppy.osu"; origin = "flathub"; }
     ];
+
+    # Expose Nix-managed icon themes to Flatpak applications.
+    overrides.settings.global = {
+      Context.filesystems = [
+        "${elementaryUrutau}/share:ro"
+        "${elementary}/share:ro"
+      ];
+
+      Environment = {
+        XDG_DATA_DIRS = builtins.concatStringsSep ":" [
+          "${elementaryUrutau}/share"
+          "${elementary}/share"
+          "/app/share"
+          "/usr/share"
+          "/usr/share/runtime/share"
+          "/run/host/user-share"
+          "/run/host/share"
+        ];
+      };
+    };
   };
 }
+
