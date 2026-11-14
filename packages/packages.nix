@@ -77,6 +77,15 @@ pkgs: with pkgs; [
     tuxpaint
     tuxtype
 
+    # partition management
+    dosfstools
+    gparted
+    parted
+
     # syd
+    altserver-linux
+    iloader
+    ventoy
+    gparted
     pfetch
 ]

@@ -35,4 +35,8 @@
 
   environment.systemPackages = import ../packages/packages.nix pkgs;
   system.stateVersion = "26.05";
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "ventoy-1.1.18"
+  ];
 }

@@ -91,6 +91,11 @@ let
         installation_mode = "force_installed";
         install_url = "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi";
       };
+      # Catppuccin Mocha Mauve theme
+      "{8446b178-1883-4796-82d8-3e692fb64346}" = {
+        installation_mode = "force_installed";
+        install_url = "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-mocha-mauve-git/latest.xpi";
+      };
     };
 
     # Dark Reader managed storage config
@@ -116,6 +121,8 @@ let
   };
 in
 {
+  home.file.".mozilla/firefox/default/chrome/base.css".source =
+  ./base.css;
   programs.firefox = {
     enable = true;
     configPath = ".mozilla/firefox";
@@ -128,11 +135,11 @@ in
 
       extensions.force = true;
 
-      #####userChrome = builtins.readFile ./firefox-userChrome.css;
-      #####userContent = builtins.readFile ./firefox-userContent.css;
+      userChrome = builtins.readFile ./firefox-userChrome.css;
+      userContent = builtins.readFile ./firefox-userContent.css;
 
       settings = {
-        #####"toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "browser.display.use_document_fonts" = 1;
 
         # hardware acceleration and webrender
@@ -213,6 +220,18 @@ in
         # media compatibility (widevine drm and webrtc stay enabled)
         "media.eme.enabled" = true;
         "media.peerconnection.enabled" = true;
+
+        # prevent gtk theme bleed-through and use clean modern native styling
+        "widget.content.allow-gtk-dark-theme" = false;
+        "widget.non-native-theme.enabled" = true;
+        "widget.non-native-theme.scrollbar.style" = 5;
+        "widget.non-native-theme.gtk.scrollbar.allow-buttons" = false;
+        "widget.use-xdg-desktop-portal.file-picker" = 1;
+        "widget.use-xdg-desktop-portal.mime" = 1;
+        "browser.tabs.inTitlebar" = 1;
+        "browser.theme.content-theme" = 0;
+        "browser.theme.toolbar-theme" = 0;
+        "layout.css.prefers-color-scheme.content-override" = 0;
       };
     };
   };
