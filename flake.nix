@@ -68,7 +68,10 @@
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "bak";
 
-          home-manager.users.saturn.imports = [ ./home/home.nix ];
+          home-manager.users.saturn.imports = [
+            ./home/home.nix
+            lazyvim-nix.homeManagerModules.default
+          ];
 
           home-manager.sharedModules = [
               inputs.nixcord.homeModules.nixcord

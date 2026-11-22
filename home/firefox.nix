@@ -232,6 +232,11 @@ in
         "browser.theme.content-theme" = 0;
         "browser.theme.toolbar-theme" = 0;
         "layout.css.prefers-color-scheme.content-override" = 0;
+
+        # Session and tab restoration
+        "browser.startup.page" = 3;
+        "browser.sessionstore.resume_from_crash" = true;
+        "browser.sessionstore.restore_on_demand" = true;
       };
     };
   };

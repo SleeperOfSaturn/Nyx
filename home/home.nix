@@ -6,6 +6,7 @@
   imports = [
     ./nixcord.nix
     ./firefox.nix
+    ./lazyvim.nix
   ];
 
 }
