@@ -7,6 +7,7 @@
     ./nixcord.nix
     ./firefox.nix
     ./lazyvim.nix
+    ./elementary.nix
   ];
 
 }

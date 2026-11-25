@@ -83,9 +83,16 @@ pkgs: with pkgs; [
     parted
 
     # syd
+    wezterm
+    ghostty
+    drumgizmo
+    lsp-plugins
+    surge-xt
+    ardour
     altserver-linux
     iloader
     ventoy
     gparted
     pfetch
+    master.xtool
 ]

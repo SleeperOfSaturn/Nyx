@@ -497,6 +497,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-master": {
+      "locked": {
+        "lastModified": 1795528918,
+        "narHash": "sha256-Zu7wIWZQksvnhsMNBMu915zP3AEprHdfEl4/bqLTszA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3b2ad3ef74446de7a257771989e58bac02102058",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-packages": {
       "locked": {
         "lastModified": 1792812153,
@@ -589,11 +605,11 @@
     },
     "nixpkgs_7": {
       "locked": {
-        "lastModified": 1793341285,
-        "narHash": "sha256-Y1CiZ4SoBUjLQyQM/pY+rS2dXD3CHLPstF0lmOc73D4=",
+        "lastModified": 1795234589,
+        "narHash": "sha256-f/VVvxf5RsQgWVhUtefoca5ktVg0DA2bnkMOcmSnozo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1c89083e451e891152365b799595cf7790a43325",
+        "rev": "2786a2a72088ecf32aea5b3ec52099e6a7cff78f",
         "type": "github"
       },
       "original": {
@@ -676,6 +692,7 @@
         "nixcord": "nixcord",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_7",
+        "nixpkgs-master": "nixpkgs-master",
         "pkgit": "pkgit",
         "sunshine-virt-display": "sunshine-virt-display",
         "syd": "syd",

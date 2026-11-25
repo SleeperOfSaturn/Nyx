@@ -35,6 +35,7 @@
 
   environment.systemPackages = import ../packages/packages.nix pkgs;
   system.stateVersion = "26.05";
+  hardware.microsoft-surface.kernelVersion = "stable";
 
   nixpkgs.config.permittedInsecurePackages = [
     "ventoy-1.1.18"
